@@ -1,0 +1,135 @@
+---
+title: "VPU - Erster Abschnitt"
+output: learnr::tutorial
+runtime: shiny_prerendered
+---
+
+```{r setup, include=FALSE}
+library(learnr)
+knitr::opts_chunk$set(echo = FALSE)
+gradethis::gradethis_setup()
+```
+
+# Einführung
+
+## Willkommen
+
+R ist eine Programmiersprache, die einen starken Fokus auf statistische Berechnungen und Grafiken hat.
+
+R ermöglicht es uns mit dem Computer zu kommunizieren, sodass dieser Befehle umsetzt.
+
+Man kann R z. B. auch wie einen Taschenrechner verwenden.
+
+Mit "Run Code" können Sie testen, ob Ihr Code funktioniert. R zeigt jetzt unter dem grauen Kasten das Ergebnis an.
+
+Mit "Submit Solution" können Sie Ihre Antwort einreichen und bekommen eine Rückmeldung, ob Ihre Lösung korrekt ist.
+
+Ergänzen Sie den folgenden Code so, dass das Ergebnis 4 ausgegeben wird.
+
+```{r hello, exercise=TRUE, exercise.blanks=TRUE}
+1 + ____
+```
+
+```{r hello-check}
+grade_result(
+  pass_if(~identical(.result, 4)
+  )
+)
+```
+
+## Kommentare
+
+Mit \# gekennzeichnete Textstellen sind Kommentare. Wenn das Zeichen \# am Anfang einer Zeile steht, dann wird der Code in dieser Zeile nicht ausgeführt.
+
+Kommentare können übrigens auch am Ende einer Zeile stehen und beeinflussen die Ausführung dann nicht. In R Studio werden Kommentare automatisch grün markiert.
+
+Solche Kommentare dienen dazu das Vorgehen im Code zu gliedern und leichter verständlich zu machen.
+
+Bitte passen Sie den Code, der in folgendem Kasten steht einmal so an, dass die enthaltene Berechnung tatsächlich ausgeführt wird.
+
+```{r addition, exercise=TRUE, exercise.eval=TRUE}
+# Das ist ein Kommentar
+# 3+4 # Das ist noch ein Kommentar
+```
+
+```{r addition-solution}
+# Das ist ein Kommentar
+3+4 # Das ist noch ein Kommentar
+```
+
+```{r addition-check}
+grade_code()
+```
+
+## R-Objekte
+
+Mit R können Sie Daten speichern, indem Sie sie in einem R-Objekt ablegen.
+
+Was ist ein Objekt? Das ist ein Name, mit dem Sie gespeicherte Daten abrufen können.
+
+Sie können zum Beispiel Daten in einem Objekt wie a oder b speichern. Wenn R auf dieses Objekt stößt, wird es durch die darin gespeicherten Daten ersetzt. Die Zuweisung eines Ergebnisses zu einem Objekt erfolgt über den sog. Zuweisungspfeil "\<-"
+
+Passe den folgenden Code so an, dass in der Ausgabe der Wert des Objekts b erscheint.
+
+```{r objects, exercise=TRUE, exercise.blanks=TRUE}
+a <- 3
+b <- 4
+
+# Um die Objekte in der Ausgabe anzuzeigen, müssen Sie nach der Zuweisung aufgerufen werden.
+# Rufe hier das Objekt b auf
+
+____
+
+```
+
+```{r objects-solution}
+a <- 3
+b <- 4
+
+# Um die Objekte in der Ausgabe anzuzeigen, müssen Sie nach der Zuweisung aufgerufen werden:
+# Rufe hier das Objekt b auf
+
+b
+
+```
+
+```{r objects-code-check}
+grade_code()
+```
+
+```{r quiz}
+quiz(
+  question("Was denken Sie, was passiert, wenn Sie nach der obigen Zuweisung der Code a+b ausgeführt wird?",
+    answer("Nichts"),
+    answer("Error"),
+    answer("7", correct = TRUE),
+    answer("ab")
+  )
+)
+```
+
+Als weiteres Beispiel würde der folgende Code ein Objekt mit dem Namen „die“ (engl. für Würfel) erstellen, das die Zahlen eins bis sechs enthält.
+
+Geben Sie bitte den Namen des Objekts unter dem bestehenden Code ein, um zu sehen, was in dem Objekt gespeichert ist.
+
+```{r die, exercise=TRUE, exercise.blanks=TRUE}
+die <- 1:6 
+
+# Geben Sie hier den Namen des Objekts ein, um zu sehen, was in dem Objekt gespeichert ist.
+
+____
+
+```
+
+```{r die-solution}
+die <- 1:6 
+
+# Geben Sie hier den Namen des Objekts ein, um zu sehen, was in dem Objekt gespeichert ist.
+
+die
+
+```
+
+```{r check}
+grade_code()
+```
