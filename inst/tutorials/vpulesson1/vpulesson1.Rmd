@@ -259,7 +259,6 @@ Schauen Sie sich dazu die folgende Tabelle an und beantworten Sie die Frage:
 library(tidyr)
 library(dplyr)
 
-penguins <- penguins
 
 # Gesamtanzahl der Pinguine speichern
 total_penguins <- penguins %>%
