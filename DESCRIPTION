@@ -13,7 +13,6 @@ Imports:
     dplyr,
     gradethis (>= 0.2.14),
     learnr (>= 0.11.5.9000),
-    palmerpenguins,
     tidyr
 Remotes: 
     rstudio/gradethis,
