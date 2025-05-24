@@ -17,3 +17,5 @@ Imports:
 Remotes: 
     rstudio/gradethis,
     rstudio/learnr
+Depends: 
+    R (>= 4.5.0)
