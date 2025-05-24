@@ -1,0 +1,225 @@
+---
+title: "VPU - Demo Modul 1"
+output: learnr::tutorial
+runtime: shiny_prerendered
+---
+
+```{r setup, include=FALSE}
+library(learnr)
+knitr::opts_chunk$set(echo = FALSE)
+gradethis::gradethis_setup()
+```
+
+# Modul 1 - Demo 
+
+Das ist nur eine Demo um zu zeigen, wie eine mögliche Integration in den Modulinhalt aussehen könnte.
+
+## Maße der zentralen Tendenz
+
+Maße der zentralen Tendenz werden auch als Lagemaße bezeichnet.
+Sie haben in unserem Modul schon drei verschiedene Lagemaße kennengelernt: den Mittelwert, den Median und den Modus.
+
+In der Praxis arbeitet man oft mit großen Datenmengen, bei denen eine Berechnung von Hand sehr aufwendig wäre. Daher ist es sinnvoll, diese Berechnungen mit R durchzuführen.
+
+Wir schauen uns die genannten Maße am Beispiel des "penguins"-Datensatzes an, der Informationen über Pinguine enthält, wie z. B. die Körpergröße, das Gewicht und die Art. Diese Daten stammen von der Palmer-Station in der Antarktis. Der Großteil der wissenschaftlichen Forschung, die an der Palmer-Station durchgeführt wird, betrifft die Meeresbiologie.
+
+Der Datensatz ist in R bereits unter dem Namen `penguins` verfügbar, und wir können ihn direkt verwenden.
+
+![Die Palmer-Archipel Pinguine. Artwork Artwork von Allison Horst.](https://allisonhorst.github.io/palmerpenguins/reference/figures/lter_penguins.png){width=50%}
+
+
+
+### Erster Einblick in den Datensatz
+
+Schauen wir uns zunächst einmal an, wie der Datensatz aussieht. Wir verwenden dazu die Funktion `head()`, die uns die ersten Zeilen des Datensatzes anzeigt.
+
+```{r penguins, exercise=TRUE, exercise.blanks=TRUE}
+# Zeigen Sie die ersten Zeilen des Datensatzes an, indem Sie die Funktion head() verwenden und den Namen des Datensatzes penguins in die Klammern einsetzen.
+
+____
+```  
+
+```{r penguins-solution}
+# Zeigen Sie die ersten Zeilen des Datensatzes an, indem Sie die Funktion head() verwenden 
+# Setzen Sie den Namen des Datensatzes penguins in die Klammern einsetzen.
+
+head(penguins)
+```  
+
+```{r penguins-check}
+grade_code()
+```
+
+Wir können sehen, dass der Datensatz Informationen über verschiedene Pinguinarten enthält, einschließlich weiterer Merkmale wie Gewicht, Geschlecht, Körpergröße und Flossenlänge sowie das Jahr, in dem die Daten erhoben wurden.
+
+Sie finden in den ersten Zeilen des Datensatzes den Ausdruck NA.
+
+```{r quiz2}
+question("Was denken Sie, wofür der Ausdruck NA in den Zellen der Tabelle steht?",
+    answer("Not available (Fehlender Wert)", correct = TRUE),
+    answer("Error (Fehler in der Darstellung)"),
+    answer("Nicht anwendbar"),
+    answer("Das ist eine spezielle Pinguinart")
+  )
+```
+
+### Modus
+
+Um in einem Datensatz eine spezifische Variable zu analysieren, reicht es nicht aus nur den Namen des Datensatzes zu nennen. Wir müssen auch den Namen der Spalte angeben, die wir analysieren möchten. 
+
+In unserem Fall interessiert uns die Pinguinart, die in der Spalte `species` gespeichert ist. In R wird das durch den Ausdruck `penguins$species` erreicht, wobei `$` verwendet wird, um auf eine bestimmte Spalte eines Dataframes zuzugreifen.
+
+Der Modus ist der Wert, der in einem Datensatz am häufigsten vorkommt. In R können wir den Modus mit der Funktion `table()` berechnen, die die Häufigkeit jedes Wertes einer Variablen zählen.
+
+Ergänzen Sie den folgenden Code, um den Modus der Pinguinart im Datensatz `penguins` zu berechnen. 
+
+```{r mode, exercise=TRUE, exercise.blanks=TRUE}
+# Berechnen Sie den Modus der Pinguinart im Datensatz penguins
+# Verwenden Sie die Funktion table()und den Spaltennamen 'species' im penguins Datensatz
+
+____
+```
+
+```{r mode-solution}
+# Berechnen Sie den Modus der Pinguinart im Datensatz penguins
+# Verwenden Sie die Funktion table()und den Spaltennamen 'species' im penguins Datensatz
+
+table(penguins$species)
+```
+
+```{r mode-check}
+grade_code()
+```
+
+
+```{r quiz3}
+question("Welcher Wert ist der Modus der Pinguinart (`species`) im Datensatz `penguins`?",
+    answer("Adelie", correct = TRUE),
+    answer("Chinstrap"),
+    answer("Gentoo"),
+    answer("Pinguin")
+  )
+```
+
+### Median
+
+Der Median ist der Wert, der in der Mitte eines Datensatzes liegt, wenn die Werte in aufsteigender Reihenfolge sortiert sind. Wenn die Anzahl der Werte ungerade ist, ist der Median der mittlere Wert. Wenn die Anzahl der Werte gerade ist, ist der Median der Durchschnitt der beiden mittleren Werte.
+
+In R können wir den Median mit der Funktion `median()` berechnen. Um den Median für eine bestimmte Spalte zu berechnen, müssen wir den Namen der Spalte angeben, die wir analysieren möchten. In unserem Fall interessiert uns das Körpergewicht der Pinguine, das in der Spalte `body_mass` gespeichert ist.
+
+Unser Datensatz enthält auch fehlende Werte `NA`, wie wir zu Beginn gesehen haben. Diese können durch das Argument `na.rm = TRUE` in der Funktion `median()` ausgeschlossen werden, um eine korrekte Berechnung zu gewährleisten.
+
+Ergänzen Sie den folgenden Code, um den Median des Pinguingewichts im Datensatz `penguins` zu berechnen.
+
+```{r median, exercise=TRUE, exercise.blanks=TRUE}
+# Berechnen Sie den Median des Pinguingewichts im Datensatz penguins
+# Verwenden Sie die Funktion median() und den Spaltennamen 'body_mass' im penguins Datensatz
+
+____
+```
+
+```{r median-solution}
+# Berechnen Sie den Median des Pinguingewichts im Datensatz penguins
+# Verwenden Sie die Funktion median() und den Spaltennamen 'body_mass' im penguins Datensatz
+
+median(penguins$body_mass, na.rm = TRUE)
+```
+
+```{r median-check}
+grade_code()
+```
+
+In Fällen, in denen ein Median z.B in einem Paper nicht angegeben ist, aber eine Häufigkeitstabelle vorliegt, kann man den Median auch aus der Häufigkeitstabelle ablesen. Dazu wird die kumulierte Häufigkeit berechnet, und der Median ist der Wert, bei dem die kumulierte (relative) Häufigkeit die Hälfte der der Beobachtungen (also 50%) erreicht oder überschreitet.
+
+Schauen Sie sich dazu die folgende Tabelle an und beantworten Sie die Frage:
+
+```{r echo=FALSE, warning=FALSE, message = FALSE}
+library(tidyr)
+library(dplyr)
+
+
+# Gesamtanzahl der Pinguine speichern
+total_penguins <- penguins %>%
+  drop_na() %>%
+  nrow()
+
+# Tabelle erstellen
+penguins %>%
+  drop_na() %>% 
+  group_by(flipper_len = cut(flipper_len, breaks = seq(170, 240, by = 10))) %>%
+  summarise(
+    count = n(),
+    relative_frequency = count / total_penguins
+  ) %>%
+  mutate(cumulative_frequency = cumsum(relative_frequency))
+
+```
+
+```{r quiz4}
+question("Welche Flossenlängen-Gruppe ist der Median im Datensatz `penguins`?",
+    answer("190-200", correct = TRUE),
+    answer("180-190"),
+    answer("210-220"),
+    answer("Das ist anhand der Tabelle nicht erkennbar.")
+  )
+```
+
+### Mittelwert
+
+Der Mittelwert oder auch "Arithmetisches Mittel" berechnet sich als Summe aller Werte geteilt durch die Anzahl der Werte. 
+
+Die Anzahl der Werte können wir in R mit der Funktion `length()` berechnen.
+Die Summe aller Werte wird in R mit der Funktion `sum()` berechnet.
+
+Summiert werden können Werte aber nur, wenn Sie tatsächlich numerisch sind. Unser Datensatz enthält auch fehlende Werte `NA`, wie wir zu Beginn gesehen haben. Diese wurden im folgenden schon für Sie ausgeschlossen.
+
+```{r mean, exercise=TRUE, exercise.blanks=TRUE}
+# Berechnen Sie den Mittelwert des Pinguingewichts (body_mass) im Datensatz penguins
+
+sum_weight <- sum(penguins$body_mass, na.rm = TRUE)
+num_penguins <- length(penguins$body_mass[!is.na(penguins$body_mass)])
+
+mean_weight <- ____ / ____ # Hier bitte Ihre Berechnung ergänzen
+
+mean_weight
+```
+
+```{r mean-solution}
+# Berechnen Sie den Mittelwert des Pinguingewichts (body_mass) im Datensatz penguins
+
+sum_weight <- sum(penguins$body_mass, na.rm = TRUE)
+num_penguins <- length(penguins$body_mass[!is.na(penguins$body_mass)])
+
+mean_weight <- sum_weight / num_penguins # Hier bitte ergänzen
+
+mean_weight
+```
+
+```{r mean-check}
+grade_code()
+```
+
+Glücklicherweise ist das eigentlich sogar viel einfacher als eben dargestellt. In R können wir den Mittelwert auch direkt mit der Funktion `mean()` berechnen. 
+
+Die Berechnung, die wir eben durchgeführt haben können wir daher auch abkürzen.
+
+```{r mean-short,exercise=TRUE, exercise.blanks=TRUE}
+# Berechnen Sie den Mittelwert des Pinguingewichts (body_mass) im Datensatz penguins
+# Verwenden Sie dafür die Funktion mean()
+# Vergessen Sie nicht, fehlende Werte auszuschließen mit na.rm = TRUE!
+
+____
+```
+
+
+```{r mean-short-solution}
+# Berechnen Sie den Mittelwert des Pinguingewichts (body_mass) im Datensatz penguins
+# Verwenden Sie dafür die Funktion mean()
+# Vergessen Sie nicht, fehlende Werte auszuschließen mit na.rm = TRUE!
+
+mean(penguins$body_mass, na.rm = TRUE)
+```
+
+```{r mean-short-check}
+grade_code()
+```
