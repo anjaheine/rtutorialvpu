@@ -130,6 +130,6 @@ die
 
 ```
 
-```{r check}
+```{r die-check}
 grade_code()
 ```
