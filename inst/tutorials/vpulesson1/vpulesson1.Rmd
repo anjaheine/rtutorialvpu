@@ -259,6 +259,8 @@ Schauen Sie sich dazu die folgende Tabelle an und beantworten Sie die Frage:
 library(tidyr)
 library(dplyr)
 
+penguins <- palmerpenguins::penguins
+
 # Gesamtanzahl der Pinguine speichern
 total_penguins <- penguins %>%
   drop_na() %>%
